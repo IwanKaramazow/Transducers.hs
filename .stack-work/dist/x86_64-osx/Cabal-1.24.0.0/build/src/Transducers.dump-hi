@@ -1,0 +1,170 @@
+
+==================== FINAL INTERFACE ====================
+2016-09-28 14:05:43.861092 UTC
+
+interface transducers-0.1.0.0-Alm2F19OaEg3quahTdCHoB:Transducers 8001
+  interface hash: 3af6f3c7339d829a82593d3a5291ccf3
+  ABI hash: ae4c7fdeb015cf04f9a1654c3bc17659
+  export-list hash: af31441269042a06ff56a3b149b54c67
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: f606d4f14f00f385d2e6962f2cf917ec
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Transducers.transduce
+  Transducers.xfilter
+  Transducers.xlist
+  Transducers.xmap
+  Transducers.Conjable{Transducers.conj Transducers.empty}
+  Transducers.ReducingFn
+  Transducers.Transducer
+module dependencies:
+package dependencies: base-4.9.0.0* ghc-prim-0.5.0.0
+                      integer-gmp-1.0.0.1
+orphans: base-4.9.0.0:GHC.Base base-4.9.0.0:GHC.Float
+family instance modules: base-4.9.0.0:Control.Applicative
+                         base-4.9.0.0:Data.Either base-4.9.0.0:Data.Functor.Const
+                         base-4.9.0.0:Data.Monoid base-4.9.0.0:Data.Type.Equality
+                         base-4.9.0.0:GHC.Generics base-4.9.0.0:GHC.IO.Exception
+                         base-4.9.0.0:GHC.TypeLits
+import  -/  base-4.9.0.0:Data.Foldable 8aeb682f6c74f97fcf0ace0d608a43ea
+import  -/  base-4.9.0.0:GHC.Base 8ed3be81c0707b322f975a84ae1bb816
+import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
+3725b2f69324dbd9da96fdf17d823a79
+  $fConjable[] :: Transducers.Conjable []
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ [] GHC.Types.[] Transducers.$fConjable[]_$cconj -}
+977815d829a924123de437a60382d6f1
+  $fConjable[]_$cconj :: Transducers.ReducingFn [a] a
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a (xs :: [a]) (x :: a) ->
+                 GHC.Base.augment
+                   @ a
+                   (\ @ b (c :: a -> b -> b)[OneShot] (n :: b)[OneShot] ->
+                    GHC.Base.foldr @ a @ b c n xs)
+                   (GHC.Types.: @ a x (GHC.Types.[] @ a))) -}
+cd40cbbc7b1ab3b272750d812b6ffd94
+  $tc'C:Conjable :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   11355139356511693256##
+                   14880596322095740063##
+                   Transducers.$trModule
+                   Transducers.$tc'C:Conjable1) -}
+17134a30d31a9423d6181affb4aae390
+  $tc'C:Conjable1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "'C:Conjable"#) -}
+9036dfaf570b6d2d3a2bf12a8e23deac
+  $tcConjable :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   16989325091399726776##
+                   1512641055498637268##
+                   Transducers.$trModule
+                   Transducers.$tcConjable1) -}
+809cd61ebdf5a0a6d2827b338f40d8ea
+  $tcConjable1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Conjable"#) -}
+d5d37895a1e9f776b6a926192f49838f
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Transducers.$trModule2
+                   Transducers.$trModule1) -}
+e9df17a23987834779147d1369543a52
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "Transducers"#) -}
+bcf1c7fba62df3c628f3c18533895054
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "transducers-0.1.0.0-Alm2F19OaEg3quahTdCHoB"#) -}
+3725b2f69324dbd9da96fdf17d823a79
+  class Conjable (f :: * -> *) where
+    empty :: f a
+    conj :: Transducers.ReducingFn (f a) a
+    {-# MINIMAL empty, conj #-}
+841d4aee43c0f8d02b289ae467bb7a58
+  type ReducingFn r a = r -> a -> r
+2d13467ab73d9485de3a0a128ae07771
+  type Transducer a b =
+    forall r. Transducers.ReducingFn r a -> Transducers.ReducingFn r b
+d8b15c94903fa17af3456c4f419023af
+  transduce ::
+    Data.Foldable.Foldable t =>
+    Transducers.Transducer a b
+    -> Transducers.ReducingFn r a -> r -> t b -> r
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <S(LLLLC(S)LLLLLLLLLLL),1*U(A,A,A,A,1*C1(U),A,A,A,A,A,A,A,A,A,A,A)><L,1*C1(U)><L,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ (t :: * -> *)
+                   @ a
+                   @ b
+                   @ r
+                   ($dFoldable :: Data.Foldable.Foldable t)
+                   (xform :: Transducers.Transducer a b)
+                   (f :: Transducers.ReducingFn r a) ->
+                 Data.Foldable.foldl @ t $dFoldable @ r @ b (xform @ r f)) -}
+a5b56801c5c482120a73fb707e230df5
+  xfilter :: (a -> GHC.Types.Bool) -> Transducers.Transducer a a
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <C(S),1*C1(U)><L,1*C1(C1(U))><L,U><L,U>,
+     Unfolding: InlineRule (4, True, False)
+                (\ @ a
+                   (dk :: a -> GHC.Types.Bool)
+                   @ r
+                   (xf :: Transducers.ReducingFn r a)
+                   (r1 :: r)
+                   (a1 :: a) ->
+                 case dk a1 of wild {
+                   GHC.Types.False -> r1 GHC.Types.True -> xf r1 a1 }) -}
+660918a87b6b5d3e539cbc7770365149
+  xlist ::
+    (Data.Foldable.Foldable t, Transducers.Conjable t) =>
+    Transducers.Transducer b a -> t a -> t b
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <S(LLLLC(C(S))LLLLLLLLLLL),1*U(A,A,A,A,1*C1(C1(U)),A,A,A,A,A,A,A,A,A,A,A)><L,U(1*U,1*U)><L,1*C1(U)>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ (t :: * -> *)
+                   @ b
+                   @ a
+                   ($dFoldable :: Data.Foldable.Foldable t)
+                   ($dConjable :: Transducers.Conjable t)
+                   (xform :: Transducers.Transducer b a) ->
+                 Data.Foldable.foldl
+                   @ t
+                   $dFoldable
+                   @ (t b)
+                   @ a
+                   (xform @ (t b) (Transducers.conj @ t $dConjable @ b))
+                   (Transducers.empty @ t $dConjable @ b)) -}
+dfa238a4038d6833f6323ef7ab69607f
+  xmap :: (a -> b) -> Transducers.Transducer b a
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <L,1*C1(U)><C(C(S)),1*C1(C1(U))><L,U><L,U>,
+     Unfolding: InlineRule (4, True, False)
+                (\ @ a
+                   @ b
+                   (dk :: a -> b)
+                   @ r
+                   (xf :: Transducers.ReducingFn r b)
+                   (r1 :: r)
+                   (a1 :: a) ->
+                 xf r1 (dk a1)) -}
+instance [safe] Transducers.Conjable [[]]
+  = Transducers.$fConjable[]
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+
